@@ -1,0 +1,13 @@
+#ball
+{
+    border-radius: 50%;
+    background: aqua;
+    width: 40px;
+    height: 40px;
+}
+#box
+{
+    width: 100px;
+    height: 100px;
+    background: chocolate;
+}
