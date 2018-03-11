@@ -4,9 +4,17 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="Graphics/Ball.css" rel="stylesheet" type="text/css">
+    <script src="Engine/Ball.js"></script>
 </head>
-<body>
-<div id="ball" class="loader"></div>
-<div id="box" class="loader"></div>
+<body><div id="ball_div">
+<canvas id="ball" class="loader" onmousedown="up()"></canvas></div>
+<script>
+    function up() {
+        var y=document.getElementById('ball').offsetTop;
+        var yn = y + 5;
+        //document.getElementById("ball").style.bottom = yn+"px";
+    }
+
+</script>
 </body>
 </html>
