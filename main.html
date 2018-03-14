@@ -35,24 +35,31 @@
         {
             ball.vy=-ball.vy;
         }
+        if(ball.x+ball.vx>canvas.width||ball.x+ball.vx<canvas.width/2)
+        {
+            ball.vx=-ball.vx;
+        }
         ball.y+=ball.vy;
         ball.vy *= .99;
         ball.vy += .25;
         raf=window.requestAnimationFrame(draw);
     }
-    canvas.addEventListener('mouseover',function (e) {
-        raf=window.requestAnimationFrame(draw);
+    raf=window.requestAnimationFrame(draw);
+
+    document.addEventListener('keydown',function (e) {
+        console.log(e.keyCode);
+        if(e.keyCode==32){
+        ball.vy=-16
+        }
+    });
+    ball.draw();
+    /*canvas.addEventListener('mouseover',function (e) {
+
     });
     canvas.addEventListener('mouseout',function (e) {
         window.cancelAnimationFrame(raf);
     });
-    canvas.addEventListener('click',function (e) {
-        /*console.log(e.keyCode);
-        if(e.keyCode==32)*/
-
-        ball.vy=-20
-    });
-    ball.draw();
+    */
     /*
     var i = 0;
     ctx.fillStyle='rgba(255,0,0,0.2)';
