@@ -14,9 +14,9 @@
     var canvas = document.querySelector("canvas");
     var raf;
     var ball= {
-        x:100,
+        x:400,
         y:500,
-        vx:5,
+        vx:0,
         vy:2,
         radius:30,
             color:'green',
@@ -31,14 +31,15 @@
     function draw() {
         ctx.clearRect(0,0,canvas.width,canvas.height);
         ball.draw();
-        if(ball.y+ball.vy>canvas.height||ball.y+ball.vy<canvas.height/2)
+        if(ball.y+ball.vy>canvas.height||ball.y+ball.vy<canvas.height/10)
         {
             ball.vy=-ball.vy;
         }
-        if(ball.x+ball.vx>canvas.width||ball.x+ball.vx<canvas.width/2)
+        if(ball.x+ball.vx>canvas.width||ball.x+ball.vx<0)
         {
             ball.vx=-ball.vx;
         }
+        ball.x += ball.vx;
         ball.y+=ball.vy;
         ball.vy *= .99;
         ball.vy += .25;
@@ -49,7 +50,8 @@
     document.addEventListener('keydown',function (e) {
         console.log(e.keyCode);
         if(e.keyCode==32){
-        ball.vy=-16
+        ball.vy=-16;
+        ball.vx=5;
         }
     });
     ball.draw();
