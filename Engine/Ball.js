@@ -1,5 +1,12 @@
-function Ball(object){
+function Ball(){
     this.Jump=function () {
-        object.left=100+'px';
+        var oBall=document.querySelector("#ball_div");
+        oBall.addEventListener("click",this.Jump);
+        this.Jump=function(oEvent) {
+
+        };
+        oBall.left=100+'px';
+        //object.left=100+'px';
         };
 }
+new Ball();
