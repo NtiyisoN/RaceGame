@@ -4,10 +4,93 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="Graphics/Ball.css" rel="stylesheet" type="text/css">
+    <script src="Engine/Ball.js"></script>
+    <link href="Graphics/Ball.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
-<div id="ball"></div>
-<div id="box"></div>
+<canvas width="800" height="800" id="ball"></canvas>
+<script>
+
+    var ctx = document.querySelector("canvas").getContext("2d");
+    var canvas = document.querySelector("canvas");
+    var raf;
+    var ball= {
+        x:400,
+        y:500,
+        vx:0,
+        vy:2,
+        radius:30,
+            color:'green',
+            draw:function () {
+          ctx.beginPath();
+          ctx.arc(this.x,this.y,this.radius,0,Math.PI*2,true);
+          ctx.closePath();
+          ctx.fillStyle=this.color;
+          ctx.fill();
+            }
+        };
+    function draw() {
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ball.draw();
+        if(ball.y+ball.vy>canvas.height||ball.y+ball.vy<canvas.height/10)
+        {
+            ball.vy=-ball.vy;
+        }
+        if(ball.x+ball.vx>canvas.width||ball.x+ball.vx<0)
+        {
+            ball.vx=-ball.vx;
+        }
+        ball.x += ball.vx;
+        ball.y+=ball.vy;
+        ball.vy *= .99;
+        ball.vy += .25;
+        raf=window.requestAnimationFrame(draw);
+    }
+    raf=window.requestAnimationFrame(draw);
+
+    document.addEventListener('keydown',function (e) {
+        console.log(e.keyCode);
+        if(e.keyCode==32){
+        ball.vy=-16;
+        ball.vx=5;
+        }
+    });
+    ball.draw();
+    /*canvas.addEventListener('mouseover',function (e) {
+
+    });
+    canvas.addEventListener('mouseout',function (e) {
+        window.cancelAnimationFrame(raf);
+    });
+    */
+    /*
+    var i = 0;
+    ctx.fillStyle='rgba(255,0,0,0.2)';
+    function draw() {
+       // ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //ctx.setLineDash([4, 2]);
+        //ctx.lineDashOffset = -offset;
+        //ctx.strokeRect(10, 10, 100, 100);
+        //
+        ctx.beginPath();
+        ctx.arc(500+i, 500+i, 100/i, 0, Math.PI*2, true);
+
+        ctx.fill();
+        ctx.closePath();
+    }
+
+    function march() {
+        i++;
+        if (i > 100) {
+            i = 0;
+        }
+        draw();
+        setTimeout(march, 50);
+    }
+
+    march();*/
+</script>
+
 </body>
 </html>
