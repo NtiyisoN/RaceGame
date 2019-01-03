@@ -1,0 +1,46 @@
+{
+  "name": "OrderProduct",
+  "plural": "OrderProducts",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "default": "empty product name"
+    },
+    "price": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "currency": {
+      "type": "string",
+      "required": true,
+      "default": "EUR"
+    },
+    "quantity": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "totalPrice": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    }
+  },
+  "validations": [],
+  "relations": {
+    "comments": {
+      "type": "hasMany",
+      "model": "ProductComment",
+      "foreignKey": "productId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
