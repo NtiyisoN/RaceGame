@@ -1,17 +1,16 @@
 {
 	"compilerOptions": {
-		"emitDecoratorMetadata": false,
-		"experimentalDecorators": false,
+		"target": "es6",
 		"module": "commonjs",
-		"target": "es5",
-		"noImplicitAny": false,
+		"outDir": "./dist/server",
+		"strict": true,
 		"sourceMap": true,
-		"removeComments": true,
-		"moduleResolution": "classic"
+		"typeRoots": [
+			"node_modules/@types"
+		]
 	},
 	"exclude": [
-		"node_modules",
-		"typescript",
-		"typings"
+		"dist",
+		"node_modules"
 	]
 }
