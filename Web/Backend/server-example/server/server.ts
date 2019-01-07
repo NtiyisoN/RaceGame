@@ -1,6 +1,8 @@
 import * as express from 'express';
 import * as http from 'http';
 import * as WebSocket from 'ws';
+import Player from '../services/player-service'
+let players: Player[];
 
 const app = express();
 
@@ -27,10 +29,7 @@ wss.on('connection', (ws: WebSocket) => {
 			//send back the message to the other clients
 			wss.clients
 				.forEach(client => {
-					console.log(client);
-					//if (client != ws) {
 						client.send(`Hello, broadcast message -> ${message}`);
-					//}
 				});
 
 		} else {
